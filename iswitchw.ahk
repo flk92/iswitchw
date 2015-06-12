@@ -63,20 +63,20 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 AutoTrim, off
 
-Gui, +LastFound +AlwaysOnTop -Caption +ToolWindow
-Gui, Color, black,black
-WinSet, Transparent, 225
-Gui, Font, s16 cEEE8D5 bold, Consolas
+Gui, +LastFound +AlwaysOnTop +Caption +ToolWindow
+Gui, Color, white,white
+;WinSet, Transparent, 225
+Gui, Font, s11 black, Segoe UI
 Gui, Margin, 4, 4
-Gui, Add, Text,     w100 h30 x6 y8, Search`:
-Gui, Add, Edit,     w500 h30 x110 y4 gSearchChange vsearch,
-Gui, Add, ListView, w854 h510 x4 y40 -VScroll -HScroll -Hdr -Multi Count10 AltSubmit gListViewClick, index|title|proc
+;Gui, Add, Text,     w100 h30 x6 y8, Search`:
+Gui, Add, Edit,     w520 x4 y4 gSearchChange vsearch,
+Gui, Add, ListView, w520 h300 x4 y36 -VScroll -HScroll -Hdr -Multi Count10 AltSubmit gListViewClick, title|proc
 
 ;----------------------------------------------------------------------
 ;
 ; Win+space to activate.
 ;
-#space::
+^space::
 
 search =
 lastSearch =
@@ -563,7 +563,7 @@ DrawListView(windows)
     if iconNumber > 0
     {
       iconCount+=1
-      LV_Add("Icon" . iconNumber, iconCount, window.procName, title)
+      LV_Add("Icon" . iconNumber, window.procName, title)
     } else {
       removedRows.Insert(idx)
     }
@@ -579,9 +579,8 @@ DrawListView(windows)
   LV_Modify(1, "Select")
   LV_Modify(1, "Focus")
 
-  LV_ModifyCol(1,70)
-  LV_ModifyCol(2,140)
-  LV_ModifyCol(3,640)
+  LV_ModifyCol(1,120)
+  LV_ModifyCol(2,396)
 }
 
 ;----------------------------------------------------------------------
